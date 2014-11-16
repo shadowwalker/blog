@@ -43,7 +43,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                <div class="bdsharebuttonbox">
+                <!-- <div class="bdsharebuttonbox">
                     <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
                     <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
                     <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
@@ -52,6 +52,25 @@
                     <a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a>
                     <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
                 </div>
+                <script>
+                    var text = "ShadowWalker's Blog - "+document.title;
+                    var pic = "";
+                    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":text,"bdMini":"2","bdMiniList":[],"bdPic":pic,"bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                </script>
+                <p class="copyright text-muted">Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}</p>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="bdsharebuttonbox col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></li>
+                    <li><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a></li>
+                    <li><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></li>
+                    <li><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a></li>
+                    <li><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a></li>
+                    <li><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></li>
+                    <li><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></li>
+                </ul>
                 <script>
                     var text = "ShadowWalker's Blog - "+document.title;
                     var pic = "";
