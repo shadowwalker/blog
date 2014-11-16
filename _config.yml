@@ -1,8 +1,9 @@
 # Site settings
 title: ShadowWalker's Blog
 email: shdowwalker1117@hotmail.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
+description: "ShadowWalker‘s blog on github."
 baseurl: "/blog"
+cdnurl: "http://shadowcdn.qiniudn.com/blog"
 url: "http://shadowwalker.github.io/blog"
 twitter_username:
 github_username: shadowwalker
