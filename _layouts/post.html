@@ -1,7 +1,14 @@
 ---
 layout: default
 ---
-
+<style>
+    pre.code-container{
+        padding: 0;
+        border: 0;
+        color: #fff;
+        background-color: #fff;
+    }
+</style>
 <!-- Post Header -->
 <header class="intro-header" style="background-image: url('{{ site.cdnurl }}/{{ page.header-img }}')">
     <div class="container">
@@ -60,6 +67,10 @@ layout: default
         s.type = 'text/javascript';
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+        //code highlighter
+        $('pre code').each(function(i, block){
+            hljs.highlightBlock(block);
+        });
     });
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
