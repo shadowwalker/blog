@@ -5,6 +5,7 @@ subtitle:   "写在23岁生日前夕，从新出发."
 date:       2014-11-16 17:29:00
 author:     "ShadowWalker"
 header-img: "img/sledgehammer_peak.jpeg"
+location:	"Shanghai"
 ---
 
 <p>这几天在<a href="https://github.com">github.com</a>上搭建了自己的博客，依照惯例进行Hello World测试。</p>
