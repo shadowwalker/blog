@@ -14,9 +14,9 @@ This article would talk about how to establish a static website on [<i class="fa
 
 假设你对Git已经有所了解，并对网页有最基本的认识。那么我相信在接下来的几分钟里，我们可以一起搭建出你的第一个github page，你可以用它来做你的个人宣传页，产品页，静态博客等等所有的静态页面。OK，我们开始！
 
-1. 准备好你的[github.com](https://www.github.com/)账号
-2. 在本地和github上配置你的SSH Key用于代码的上传，或者下载安装github桌面客户端，用客户端进行下载、上传、分支等操作。以下我使用命令行操作，客户端操作类同且简单，不再赘述。
-3. 建立你的github目录，给两种方案：
+* 准备好你的[github.com](https://www.github.com/)账号
+* 在本地和github上配置你的SSH Key用于代码的上传，或者下载安装github桌面客户端，用客户端进行下载、上传、分支等操作。以下我使用命令行操作，客户端操作类同且简单，不再赘述。
+* 建立你的github目录，给两种方案：
 
   方案一：<span class="text-muted">推荐</span> 在github.com网页上创建目录，再clone到本地
   
@@ -30,13 +30,13 @@ $ cd website    #创建，进入目录
 $ git init      #git初始化
 $ git checkout -b gh-pages    #创建gh-pages分支，github.com规定在这个分支上才有效</code></pre>
 
-4. 创建配置文件 _config.yml
+* 创建配置文件 _config.yml
 
 创建文件，添加内容。注意baseurl:后一定要有空格。
 
   <pre class="code-container"><code class="bash">baseurl: /home</code></pre>
 
-5. 创建模板，文章，首页
+* 创建模板，文章，首页
 
 创建如下目录结构和文件
 
@@ -88,7 +88,7 @@ index.html
         [% endfor %]
 　　&lt;/ul&gt;</code></pre>
 
-6. 还差一步，发布
+* 还差一步，发布
 
 <pre class="code-container"><code class="bash">$ git add --all
 $ git commit -m "first post"
@@ -97,7 +97,7 @@ $ git push origin gh-pages</code></pre>
 
   发布之后需要等待十多分钟，你的页面就可以访问了。页面地址：http://[username].github.com/home/ 。这里的home就是刚才在_config.yml里配置的baseurl参数。
 
-7. 可选，域名绑定
+* 可选，域名绑定
 
   在git目录下建一个CNAME文件，里面写上你的域名。然后再你的域名服务商的DNS里添加一条记录。
 
@@ -121,6 +121,8 @@ $ git push origin gh-pages</code></pre>
 
 ##CDN云存储方案
 
+一句话概括CDN和它的作用就是
+
 ##Open CDN 公共库
 
 Open CDN公共库能够免费提供CDN节点加速服务，能有效提高加载速度和效果。我们如果能够找到自己所使用的js和css第三方库的CDN链接，就可以将网页中的src改到上面去。例如：
@@ -142,6 +144,15 @@ Open CDN公共库能够免费提供CDN节点加速服务，能有效提高加载
 其中第二个非常有用的一点是将googleapis的公共库做了代理，这样只要把googleapis换成useso就可以轻松加载google的在线资源。避免了众所周知的无法加载的问题。
 
 ##第三方评论插件 Disqus
+
+第三方的评论插件应该有很多，我这里用Disqus为例。读者也可以在本页面下面自己体会Disqus的效果。我觉得这种插件最有意思的地方是让你的静态页面看上去像个动态交互网页一样，看上去更像一个真正的博客。要在自己的网页上部署Disqus，只需要几个步骤:
+
+* 注册[Disqus](https://www.disqus.com/)。
+* 填写博客名称，填写url。这也是他们平台对你页面的一个标识。
+* 然后复制代码到页面合适的位置，js建议放在body尾部，div放在你想让他展示出来的位置。它提供了评论区和评论计数两部分的代码可供选用。
+* 完成!
+
+对此有疑问？看看本页的源码就明白了！
 
 ##参考资料
 
