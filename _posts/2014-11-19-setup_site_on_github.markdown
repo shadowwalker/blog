@@ -1,5 +1,6 @@
 ---
 layout:     post
+published: true
 title:      "Github静态博客搭建完全方案"
 subtitle:   "讨论如何Github上搭建静态站点，不仅如此，还给出一个零成本且高质量的完全解决方案。"
 date:       2014-11-19 17:29:00
@@ -111,21 +112,38 @@ $ git push origin gh-pages</code></pre>
 再次，github的开源管理已经做得相当出色，并且利用他的免费资源，加之网络上其他的资源。完全可以建立零成本，也不用担心流量问题的出色的小站。这是让人非常兴奋的事情。
 
 ##Git 和 Github
+
 说起Git大家肯定都不陌生，博主也不想多介绍。作为一个优秀的VCS，它能够帮你管理博客的不同版本，这样不用担心文章丢失，也可以方便的做历史回溯。github是一个国外的代码托管网站，国外还有[Bitbucket](https://bitbucket.org/)，类似的国内有[开源中国git托管平台](http://git.oschina.net/)，[GitCafe](https://gitcafe.com/)。从用途上讲，他们大同小异，只是在提供的服务上有差异，后面几个大多提供更大的空间，免费的私有目录等，但目前看还无法撼动github的地位。
 
 如果读者不熟悉git，我推荐[廖雪峰的git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)，讲的比较浅显易懂，花两小时就可以学完，超值。
 
 ##Jekyll与静态网页
 
+Github上的静态页面引擎用的是[Jekyll](http://jekyllrb.com/)。所谓静态页面，就是页面上的内容全部是事先写好的，而不是通过ajax等技术加载生成的。在WEB出现的早期，所有网页都是静态的，需要要用html语言写内容，浏览器讲内容下载之后解析渲染成一个网页。但是直接写html不是很直观，而且会有很多重复性的内容需要书写。Jekyll提供了一种静态页面自动生成的方案，让用户能够只关注内容本身，其他的html等又程序去生成，且它支持markdown语法，因此对没有web经验的人也更为友好。Jekyll使用ruby开发的，ruby我也没有学过。就使用来说也很简单，我目前在本地安装了jekyll，可以进行本地测试。详情还是请参考[Jekyll官网](http://jekyllrb.com/)，可以关注一下参数配置，模板等内容。
+
 ##Markdown
+
+Markdown语法是一种兼容HTML的简单又容易书写的文本格式，它允许没有WEB经验的人像写普通博客一样书写内容（只要遵循一点规则）就可以生成HTML以便页面显示。
+
+[Markdown语法说明](http://wowubuntu.com/markdown/index.html)
+
+推荐一款基于web的markdown编辑器[stackedit.io](https://stackedit.io/)
 
 ##CDN云存储方案
 
-一句话概括CDN和它的作用就是
+一句话概括CDN和它的作用就是，通过把你的文件存储在很多加速节点服务器上来提高访问加载速度，服务器会对最佳的路由和链路进行选择。
+
+我使用的是[七牛云存储](http://www.qiniu.com/)，原因很简单，它提供一定的免费空间和流量支持。目前我把图片文件存储在上面，加载效果还不错。当然你也可以存自己的js和css。使用也很简单:
+
+* 注册、实名认证
+* 创建空间容器
+* 上传文件（根据东哥的建议，可以按日期或者方便管理的形式添加前缀，如blog/img/xxx.jpg）
+* 修改页面上的url为http://spacename.qiniudn.com/blog/img/xxx.jpg
+* 完成!
 
 ##Open CDN 公共库
 
-Open CDN公共库能够免费提供CDN节点加速服务，能有效提高加载速度和效果。我们如果能够找到自己所使用的js和css第三方库的CDN链接，就可以将网页中的src改到上面去。例如：
+Open CDN公共库能够免费提供CDN节点加速服务，能有效提高加载速度和效果。我们如果能够找到自己所使用的js和css第三方库的CDN链接，就可以将网页中的src和href改到上面去。例如：
 
 <pre class="code-container"><code class="html">&lt;!-- 新 Bootstrap 核心 CSS 文件 --&gt;
 &lt;link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"&gt;
@@ -156,6 +174,6 @@ Open CDN公共库能够免费提供CDN节点加速服务，能有效提高加载
 
 ##参考资料
 
-1. [搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
+> [搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
 
 听说[openshift](https://www.openshift.com/)也提供免费的代码空间可以创建wordpress，webapp等，有兴趣可以了解一下。
