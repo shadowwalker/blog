@@ -123,7 +123,7 @@ Github上的静态页面引擎用的是[Jekyll](http://jekyllrb.com/)。所谓�
 
 ##Markdown
 
-Markdown语法是一种兼容HTML的简单又容易书写的文本格式，它允许没有WEB经验的人像写普通博客一样书写内容（只要遵循一点规则）就可以生成HTML以便页面显示。
+Markdown语法是一种兼容HTML的简单又容易书写的文本格式，它允许没有WEB经验的人像写普通博客一样书写内容（只要遵循一点规则）。就可以生成HTML以便页面显示。
 
 [Markdown语法说明](http://wowubuntu.com/markdown/index.html)
 
