@@ -94,7 +94,7 @@ index.html
 <pre class="code-container"><code class="bash">$ git add --all
 $ git commit -m "first post"
 $ git remote add origin https://github.com/username/website.git #如果你是clone下来的目录，这步可忽略
-$ git push origin gh-pages</code></pre>
+$ git push</code></pre>
 
   发布之后需要等待十多分钟，你的页面就可以访问了。页面地址：http://[username].github.com/home/ 。这里的home就是刚才在_config.yml里配置的baseurl参数。
 
