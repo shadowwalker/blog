@@ -14,7 +14,9 @@ location:	"Shanghai"
 
 ##Installing R and RStudio
 
-[R website](http://cran.r-project.org/) | [RStudio website](http://www.rstudio.com)
+[R website](http://cran.r-project.org/)
+
+[RStudio website](http://www.rstudio.com)
 
 ##Writting code / Setting your work directory
 
@@ -69,7 +71,7 @@ r-help@r-project.org
 
 ###c(a,b,c,...)
 
-创建vector，a, b, c是任意相同类型元素。如果类型不同，会发生自动类型转化。用as.[type]()来进行类型转化，如果转换不成功，会出现NA和警告。
+创建vector，a, b, c是任意相同类型元素。如果类型不同，会发生自动类型转化。用as.type()来进行类型转化，如果转换不成功，会出现NA和警告。
 
 ###vector()
 
@@ -117,6 +119,7 @@ $dim
 ###Factors
 
 Factor可以看成是带有label的整数，像enum枚举类型一样。处理函数lm()和glm()。
+
 <pre class="code-container"><code class="r">&gt; x &lt;- factor(c("yes","yes","no","yes","no"))
 &gt; ##x &lt;- factor(c("yes","yes","no","yes","no"), level=c("yes","no"))
 &gt; x

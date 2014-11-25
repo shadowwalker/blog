@@ -916,5 +916,5 @@ img.emoji {
   <li>&#xE50A;</li>
 </ul>
 <script>
-	twemoji.parse(document.getElementsByTagName('ul')[0], {size: 72});
+	twemoji.parse(document.getElementsByClassName('emoji-list')[0], {size: 72});
 </script>
