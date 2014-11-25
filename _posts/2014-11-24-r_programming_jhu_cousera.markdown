@@ -94,7 +94,7 @@ $dim
 &gt; m
      [,1] [,2] [,3]
 [1,]    1    3    5
-[2,]    2    4    6<code></pre>
+[2,]    2    4    6</code></pre>
 
 将向量变成矩阵<code>dim(m) &lt;- c(x,y)</code>。两个向量结合成矩阵<code>cbind(x, y)</code>和<code>rbind(x, y)</code>。
 
@@ -112,7 +112,7 @@ $dim
 [1] TRUE
 
 [[4]]
-[1] 1+4i<code></pre>
+[1] 1+4i</code></pre>
 
 ###Factors
 
