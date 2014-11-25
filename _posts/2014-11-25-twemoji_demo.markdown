@@ -39,8 +39,6 @@ img.emoji {
 }
 </style>
 <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
-</head>
-<body>
 <ul class="emoji-list">
   <li>&#x1F004;</li>
   <li>&#x1F0CF;</li>
