@@ -11,12 +11,11 @@ location:	"Shanghai"
 
 Twitter前段时间开源了自己的Emoji表情库，使用时用了maxCDN，引入文件后添加转译的代码即可使用：
 
-<pre class="code-container"><code class="html">
-&gt;script src="http://twemoji.maxcdn.com/twemoji.min.js"&lt;&gt;/script&lt;
-&gt;script&lt;
+<pre class="code-container"><code class="html">&lt;script src="http://twemoji.maxcdn.com/twemoji.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
   twemoji.parse(document.getElementsByClassName('emoji-list')[0], {size: 72});
-  &gt;!-- twemoji.parse(document.body); --&lt;
-&gt;/script&lt;
+  &lt;!-- twemoji.parse(document.body); --&gt;
+&lt;/script&gt;
 </code></pre>
 
 > 参考 [twemoji on github.com](https://github.com/twitter/twemoji)

@@ -268,8 +268,7 @@ from choking.
 
 读取部分之后，进行自动类型推断，再读取全部数据。这样性能会好一些。
 
-<pre class="code-container"><code class="r">
-initial &gt;- read.table("datatable.txt", nrows = 100)
+<pre class="code-container"><code class="r">initial &gt;- read.table("datatable.txt", nrows = 100)
 classes &gt;- sapply(initial, class)
 tabAll &gt;- read.table("datatable.txt",
 colClasses = classes)</code></pre>
@@ -281,8 +280,7 @@ colClasses = classes)</code></pre>
 * dump - source
 * deput - dget
 
-<pre class="code-container"><code class="r">
-&gt; y &lt;- data.frame(a = 1, b = "a")
+<pre class="code-container"><code class="r">&gt; y &lt;- data.frame(a = 1, b = "a")
 &gt; dput(y)
 structure(list(a = 1,
  b = structure(1L, .Label = "a",
@@ -317,8 +315,7 @@ other more exotic things.
 * bzfile, opens a connection to a file compressed with bzip2
 * url, opens a connection to a webpage
 
-<pre class="code-container"><code class="r">
-&gt; str(file)
+<pre class="code-container"><code class="r">&gt; str(file)
 function (description = "", open = "", blocking = TRUE,
  encoding = getOption("encoding"))
 &gt; con &lt;- gzfile("words.gz")
