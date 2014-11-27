@@ -16,7 +16,7 @@ location:	"Shanghai"
 
 [R website](http://cran.r-project.org/)
 
-[RStudio website](http://www.rstudio.com)
+[RStudio website](http://www.rstudio.com)（安装好后配置work directory）
 
 ##Writting code / Setting your work directory
 
@@ -26,18 +26,21 @@ dir() #列出当前目录文件
 read.csv("xxx.csv")
 source("r_file.R") #载入脚本
 help.start()
+?`:`  #查看 : 的文档
+?c  #查看c的文档
 
-myfunction &lt;- function(x){
-  y &lt;- rnorm(100)
+myfunction &lt;- function(x){  #写一个函数
+  y &lt;- rnorm(100) #伪随机数
   mean(y)
 }</code></pre>
 
 #Week1
-## Overview and history of R
+##Overview and history of R
 
 R is a dialect of S language.
 
 Drawbacks
+
 * 数据都是加载进内存
 * 3D性能较差
 
@@ -47,7 +50,7 @@ r-help@r-project.org
 
 ##Data type
 
-* char
+* character
 * numeric (real numbers)
 	* 双精度，指定整数后面加L
 	* Inf，无限大
@@ -71,7 +74,7 @@ r-help@r-project.org
 
 ###c(a,b,c,...)
 
-创建vector，a, b, c是任意相同类型元素。如果类型不同，会发生自动类型转化。用as.type()来进行类型转化，如果转换不成功，会出现NA和警告。
+创建vector，a, b, c是任意相同类型元素。如果类型不同，会发生**自动类型转化**。用as.type()来进行类型转化，如果转换不成功，会出现NA和警告。
 
 ###vector()
 
@@ -136,16 +139,18 @@ attr(,"levels")
 
 ###Missing Value
 
-* is.na()
-* is.nan()
+* is.na()和is.nan()讲产生一个logical向量
 * NA 有类型，integer NA, character NA ...
 * NaN是一个NA，反之不成立
+* NA和别的量做加减乘除还是NA
+* NA&FALSE为FALSE，NA&TRUE为NA
+* NA|FALSE为NA，NA|TRUE为TRUE
 
 ###Data frame
 
 * 等长列表
 * 和矩阵不同的是，它里面可以存不同类型的元素
-* row.names
+* row.names用来标识每一列的名称
 * 通常用来创建data frame: read.table()和read.csv()
 * 转化成矩阵data.matrix()
 
@@ -169,9 +174,9 @@ attr(,"levels")
 
 ##Subsetting
 
-###[
+###[]
 
-访问向量，类似python分片语法。但又有别的特性。仔细体会。
+访问向量元素，类似python分片语法。但在[]中还可以放一个logical向量来取出对应位置的元素。
 
 <pre class="code-container"><code class="r">&gt; x &lt;- c("a","b","c","c","d","a")
 &gt; x[1]
@@ -182,7 +187,7 @@ attr(,"levels")
 [1] "a" "b" "c" "c"
 &gt; x[x > "a"]
 [1] "b" "c" "c" "d"
-&gt; u <- x > "a"
+&gt; u &lt;- x &gt; "a"
 &gt; u
 [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE
 &gt; x[u]
@@ -200,9 +205,9 @@ attr(,"levels")
       [,1]
 [1,]    3</code></pre>
 
-###[[
+###[[]]
 
-访问list或data frame
+访问list或data frame，与[]不同的是，[[]]取出的是向量。
 
 <pre class="code-container"><code class="r">&gt; x &lt;- list(foo = 1:4, bar = 0.6)
 &gt; x[1]
@@ -221,18 +226,107 @@ $bar
 
 ###$
 
-用name属性访问。$后面不能是变量，但[[]]当中可以用变量。
+用name属性访问，但是不用引号。$后面不能是变量，但[[]]当中可以用变量。
 
 ###Partial Matching
 
-可以用部分的name匹配整个name，这允许你简写代码。需要增加exact=FALSE参数。
+可以用部分的name匹配整个name，这允许你简写代码。需要增加exact=FALSE参数，例如<code class="r">x[["a",exact=FASLE]]</code>。
 
 ###Removing NA Values
 
-利用is.na(x)产生逻辑序列bad，再结合[!bad]。这是一种思维方法。
+利用is.na(x)产生逻辑序列bad，再用x[!bad]。这是一种思维方法。利用complete.cases()可以产生logical序列判断哪些行缺少元素。
 
-complete.cases()
+##Vectorized operations
 
+* 矩阵相乘是%*%
+* 长度不等向量计算，短的序列会循环填充
+
+##Reading and writting data
+
+###读取数据
+
+The read.table function is one of the most commonly used functions for reading data. It has a few
+important arguments:
+
+* file, the name of a file, or a connection
+* header, logical indicating if the file has a header line
+* sep, a string indicating how the columns are separated
+* colClasses, a character vector indicating the class of each column in the dataset
+* nrows, the number of rows in the dataset
+* comment.char, a character string indicating the comment character
+* skip, the number of lines to skip from the beginning
+* stringsAsFactors, should character variables be coded as factors?
+
+With much larger datasets, doing the following things will make your life easier and will prevent R
+from choking.
+
+* Read the help page for read.table, which contains many hints
+* Make a rough calculation of the memory required to store your dataset. If the dataset is larger
+* than the amount of RAM on your computer, you can probably stop right here.
+* Set comment.char = "" if there are no commented lines in your file.
+* 估算内存消耗，一般以数据大小的两倍为准
+
+读取部分之后，进行自动类型推断，再读取全部数据。这样性能会好一些。
+
+<pre class="code-container"><code class="r">
+initial &gt;- read.table("datatable.txt", nrows = 100)
+classes &gt;- sapply(initial, class)
+tabAll &gt;- read.table("datatable.txt",
+colClasses = classes)</code></pre>
+
+###序列化dump/dput
+
+类似json字符串和json数据变量之间的转化。
+
+* dump - source
+* deput - dget
+
+<pre class="code-container"><code class="r">
+&gt; y &lt;- data.frame(a = 1, b = "a")
+&gt; dput(y)
+structure(list(a = 1,
+ b = structure(1L, .Label = "a",
+ class = "factor")),
+ .Names = c("a", "b"), row.names = c(NA, -1L),
+ class = "data.frame")
+&gt; dput(y, file = "y.R")
+&gt; new.y &lt;- dget("y.R")
+&gt; new.y
+ a b
+1 1 a
+
+&gt; x &lt;- "foo"
+&gt; y &lt;- data.frame(a = 1, b = "a")
+&gt; dump(c("x", "y"), file = "data.R")
+&gt; rm(x, y)
+&gt; source("data.R")
+&gt; y
+ a b
+1 1 a
+&gt; x
+[1] "foo"
+</code></pre>
+
+###文本链接connections
+
+Data are read in using connection interfaces. Connections can be made to files (most common) or to
+other more exotic things.
+
+* file, opens a connection to a file
+* gzfile, opens a connection to a file compressed with gzip
+* bzfile, opens a connection to a file compressed with bzip2
+* url, opens a connection to a webpage
+
+<pre class="code-container"><code class="r">
+&gt; str(file)
+function (description = "", open = "", blocking = TRUE,
+ encoding = getOption("encoding"))
+&gt; con &lt;- gzfile("words.gz")
+&gt; x &lt;- readLines(con, 10)
+&gt; x
+ [1] "1080" "10-point" "10th" "11-point"
+ [5] "12-point" "16-point" "18-point" "1st"
+ [9] "2" "20-point"</code></pre>
 
 #R-intro.pdf
 
